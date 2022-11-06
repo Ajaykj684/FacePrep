@@ -1,8 +1,33 @@
-import React from 'react'
+import React, {useState, useContext} from 'react';
+import { useNavigate } from 'react-router-dom';
+import AuthContext from '../context/AuthContext'
+
 
 function LoginPage() {
+
+  let navigate = useNavigate()
+  let {setUser} = useContext(AuthContext)
+
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  if (e.target.username.value == ""){
+   alert('username is required');
+   }
+  if (e.target.password.value == ""){
+   alert('password is required');
+   }
+  else{
+       console.log('user logged in');
+       setUser(true)
+       navigate('/home')
+   }
+
+};
+
+
   return (
    <>
+    <form onSubmit={handleSubmit}>
       <div className="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
       	<div className="relative py-3 sm:max-w-xl sm:mx-auto">
       		<div
@@ -32,6 +57,7 @@ function LoginPage() {
       		</div>
       	</div>
       </div>
+    </form>
    </>
   )
 }

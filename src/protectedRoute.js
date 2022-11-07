@@ -7,7 +7,7 @@ import { Navigate } from "react-router-dom";
 
 function ProtectedRoute({ children }) {
   
-  let {user} = useContext(AuthContext)
+  const user = localStorage.getItem('user');
 
   if (!user) {
    return <Navigate to="/login" replace />;

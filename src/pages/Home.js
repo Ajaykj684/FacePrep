@@ -24,9 +24,6 @@ const refresh = (setItems) => {};
 
 function Home() {
 
- let navigate = useNavigate()
- let {user} = useContext(AuthContext)
- let [data,setData] = useState({ length: 0 })
  const [items, setItems] = React.useState([]);
  
  React.useEffect(()=>{
@@ -44,7 +41,7 @@ function Home() {
        fetchData(setItems, items);
      }}
      hasMore={true}
-     loader={<h4 className='p-8'>Loading...</h4>}
+     loader={<h4 className='p-8 text-red-600'>Loading...</h4>}
      endMessage={
        <p style={{ textAlign: "center" }}>
          <b>Yay! You have seen it all</b>
